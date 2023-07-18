@@ -1,0 +1,8 @@
+spring:
+   dataseource:
+       driverClassName: org.h2.Driver
+       url: jdbc:h2:mem:forum
+       username: sa
+       password:
+   jpa:
+       database-platform: org.hibernate.diakect.H2Dialect
