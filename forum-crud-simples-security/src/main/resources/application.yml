@@ -13,7 +13,6 @@ data:
        initialize: false
        defer-datasource-initialization: false
        show-sql: true
-       format_sql: false
    h2:
      console:
        enabled: true
@@ -21,20 +20,20 @@ data:
        hibernate:
          ddl-auto: false
          show-sql: true
-         format_sql: false
+         format_sql: true
          globally_quoted_identifiers: true
          globally_quoted_identifiers_skip_column_definitions: true
-logging:
-  level:
-    org:
-      hibernate:
-        SQL: WARN
-        type:
-            descriptor:
-                sql:
-                    BasicBinder: WARN
-      springframework:
-        jdbc:
-          core:
-            JdbcTemplate: WARN
-            StatementCreatorUtils: WARN
+#logging:
+#  level:
+#    org:
+#      hibernate:
+#        SQL: DEBUG
+#        type:
+#            descriptor:
+#                sql:
+#                    BasicBinder: INFO
+#      springframework:
+#        jdbc:
+#          core:
+#            JdbcTemplate: INFO
+#            StatementCreatorUtils: WARN

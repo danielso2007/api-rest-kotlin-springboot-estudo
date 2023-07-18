@@ -8,5 +8,6 @@ import org.springframework.data.jpa.repository.JpaRepository
 interface UsuarioRepository: JpaRepository<Usuario, Long> {
     fun findByNome(nome: String, paginacao: Pageable): Page<Usuario>
     fun findByNomeContainingIgnoreCase(nome: String, paginacao: Pageable): Page<Usuario>
+    fun findByEmail(username: String?): Usuario
 
 }
