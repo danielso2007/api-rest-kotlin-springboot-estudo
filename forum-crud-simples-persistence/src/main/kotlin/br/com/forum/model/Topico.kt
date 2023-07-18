@@ -1,14 +1,16 @@
 package br.com.forum.model
 
 import jakarta.persistence.*
+import org.hibernate.annotations.CreationTimestamp
 import java.time.LocalDateTime
 
 @Entity
 data class Topico (
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     var id: Long? = null,
-    val titulo: String,
-    val mensagem: String,
+    var titulo: String,
+    var mensagem: String,
+    @CreationTimestamp
     val dataCriacao: LocalDateTime = LocalDateTime.now(),
     @ManyToOne
     val curso: Curso,
