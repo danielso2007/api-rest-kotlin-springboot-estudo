@@ -1,0 +1,41 @@
+spring:
+data:
+   rest:
+      defaultMediaType: application/json
+      basePath: /api
+   datasource:
+       driverClassName: org.h2.Driver
+       url: jdbc:h2:mem:forum
+       username: sa
+       password:
+   jpa:
+       database-platform: org.hibernate.dialect.H2Dialect
+       initialize: false
+       defer-datasource-initialization: false
+       show-sql: true
+   h2:
+     console:
+       enabled: true
+   properties:
+       hibernate:
+         ddl-auto: false
+         show-sql: true
+         format_sql: true
+         globally_quoted_identifiers: true
+         globally_quoted_identifiers_skip_column_definitions: true
+logging:
+  level:
+    org:
+      hibernate:
+        SQL: DEBUG
+        type:
+            descriptor:
+                sql:
+                    BasicBinder: INFO
+      springframework:
+        jdbc:
+          core:
+            JdbcTemplate: INFO
+            StatementCreatorUtils: WARN
+jwt:
+  secret: DF733656293A19C54F69093BA916F0A1A2A3C151FC95C13F3A794C2631EEB3A6
