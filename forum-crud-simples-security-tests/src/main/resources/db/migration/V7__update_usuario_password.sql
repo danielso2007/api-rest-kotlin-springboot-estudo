@@ -1,0 +1,1 @@
+UPDATE usuario set password = '$2a$12$bpmQpTNmicfaq.cT.NtuJehD1WTLetCIJOAPCzwAZwEdBp.GOXeSi';

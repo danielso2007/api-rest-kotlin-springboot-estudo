@@ -1,0 +1,48 @@
+spring:
+  devtools:
+    add-properties: false
+  datasource:
+    driverClassName: org.h2.Driver
+    url: jdbc:h2:mem:forum
+    username: sa
+    password:
+    type: com.zaxxer.hikari.HikariDataSource
+    hikari:
+      connectionTimeout: 3000
+      idleTimeout: 60000
+      maxLifetime: 180000
+      maximum-pool-size: 50
+      minimum-idle: 1
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    initialize: false
+    properties:
+      hibernate:
+        generate_statistics: true
+    defer-datasource-initialization: false
+    show-sql: true
+  h2:
+    console:
+      enabled: true
+  data:
+    properties:
+      hibernate:
+        ddl-auto: false
+        show-sql: true
+        format_sql: true
+        globally_quoted_identifiers: true
+        globally_quoted_identifiers_skip_column_definitions: true
+logging:
+  level:
+    org:
+      hibernate:
+        SQL: DEBUG
+        type:
+          descriptor:
+            sql:
+              BasicBinder: INFO
+      springframework:
+        jdbc:
+          core:
+            JdbcTemplate: INFO
+            StatementCreatorUtils: WARN

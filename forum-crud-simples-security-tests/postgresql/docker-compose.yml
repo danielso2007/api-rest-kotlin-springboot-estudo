@@ -1,0 +1,47 @@
+version: "3.9"
+services:
+  pgsql:
+    image: "postgres:14-alpine3.15"
+    container_name: "pgsql"
+    restart: always
+    environment:
+      - "POSTGRES_USER=root"
+      - "POSTGRES_PASSWORD=root"
+    ports:
+      - "5432:5432"
+    volumes:
+      - "pgsqlconf:/etc/postgresql"
+      - "pgsqldata:/var/lib/postgresql/data"
+      - "pgsqldblogs:/var/log"
+      - "./data:/opt/dump"
+    networks:
+      - netdbpgsql
+  
+  pgadmin4:
+    image: dpage/pgadmin4:7.6
+    container_name: pgadmin4
+    restart: always
+    environment:
+      - "PGADMIN_DEFAULT_EMAIL=user@domain.com"
+      - "PGADMIN_DEFAULT_PASSWORD=112358"
+    ports:
+      - "5050:80"
+    volumes:
+      - "pgadmin4sessiondata:/var/lib/pgadmin"
+      - "pgadmin4conf:/pgadmin4/config_local.py"
+      - "pgadmin4serverdefinitions:/pgadmin4/servers.json"
+    depends_on:
+      - pgsql
+    networks:
+      - netdbpgsql
+
+volumes:
+  pgsqlconf:
+  pgsqldata:
+  pgsqldblogs:
+  pgadmin4sessiondata:
+  pgadmin4conf:
+  pgadmin4serverdefinitions:
+
+networks:
+  netdbpgsql:
