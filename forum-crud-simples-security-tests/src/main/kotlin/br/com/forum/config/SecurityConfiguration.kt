@@ -10,9 +10,7 @@ import org.springframework.security.config.Customizer
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration
 import org.springframework.security.config.annotation.web.builders.HttpSecurity
-import org.springframework.security.config.annotation.web.builders.WebSecurity
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity
-import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer
 import org.springframework.security.config.annotation.web.configurers.*
 import org.springframework.security.config.http.SessionCreationPolicy
 import org.springframework.security.core.userdetails.UserDetailsService
@@ -24,7 +22,7 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher
 import org.springframework.web.cors.CorsConfiguration
 import org.springframework.web.cors.CorsConfigurationSource
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource
-import java.util.Arrays
+import java.util.*
 
 
 @Configuration
@@ -70,12 +68,23 @@ class SecurityConfiguration(
                         .requestMatchers(
                             AntPathRequestMatcher("/v1/topicos"),
                             AntPathRequestMatcher("/v1/usuarios"),
-                            AntPathRequestMatcher("/v1/topicos/relatorio"),
-                            AntPathRequestMatcher("/v1/cursos"))
+                            AntPathRequestMatcher("/v1/respostas"),
+                            AntPathRequestMatcher("/v1/cursos")
+                        )
                         .hasAnyAuthority("LEITURA_ESCRITA")
                         .requestMatchers(
+                            AntPathRequestMatcher("/v1/relatorio")
+                        )
+                        .hasAnyAuthority("ADMIN")
+                        .requestMatchers(
                             AntPathRequestMatcher("/v1/login"),
+                        )
+                        .permitAll()
+                        .requestMatchers(
                             AntPathRequestMatcher("/swagger-ui/**"),
+                        )
+                        .permitAll()
+                        .requestMatchers(
                             AntPathRequestMatcher("/v3/api-docs/**")
                         )
                         .permitAll()

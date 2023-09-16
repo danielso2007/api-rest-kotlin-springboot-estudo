@@ -4,3 +4,4 @@ INSERT INTO usuario_role (usuario_id, role_id) values (2, 1);
 INSERT INTO usuario_role (usuario_id, role_id) values (3, 1);
 INSERT INTO usuario_role (usuario_id, role_id) values (4, 1);
 INSERT INTO usuario_role (usuario_id, role_id) values (5, 1);
+INSERT INTO usuario_role (usuario_id, role_id) values (6, 2);

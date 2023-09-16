@@ -7,6 +7,7 @@ import br.com.forum.dto.TopicoView
 import br.com.forum.exception.NotFoundException
 import br.com.forum.mapper.TopicoFormMapper
 import br.com.forum.mapper.TopicoViewMapper
+import br.com.forum.model.Topico
 import br.com.forum.repository.TopicoRepository
 import jakarta.persistence.EntityManager
 import org.springframework.data.domain.Page
@@ -35,6 +36,10 @@ class TopicoService(
     fun buscarPorId(id: Long): TopicoView {
         val topico = repository.findById(id).orElseThrow { NotFoundException(notFoundMessage) }
         return topicoViewMapper.map(topico)
+    }
+
+    fun porId(id: Long): Topico {
+        return repository.findById(id).orElseThrow { NotFoundException(notFoundMessage) }
     }
 
     fun cadastrar(form: NovoTopicoForm): TopicoView {

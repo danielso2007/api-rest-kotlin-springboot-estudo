@@ -78,9 +78,4 @@ class TopicoController(private val service: TopicoService) {
         service.deletar(id);
     }
 
-    @GetMapping("/relatorio")
-    @Cacheable("topicosRelatoriosCache")
-    fun relatorio(): List<TopicoPorCategoriaDto> {
-        return service.relatorio()
-    }
 }

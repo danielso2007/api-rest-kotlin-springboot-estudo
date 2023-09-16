@@ -2,6 +2,7 @@ package br.com.forum.model
 
 import com.fasterxml.jackson.annotation.JsonIgnore
 import jakarta.persistence.*
+import java.io.Serializable
 
 @Entity
 data class Usuario (
@@ -14,4 +15,4 @@ data class Usuario (
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinColumn(name = "usuario_id")
     val role: List<Role> = mutableListOf()
-)
+) : Serializable

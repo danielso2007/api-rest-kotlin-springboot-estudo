@@ -13,6 +13,25 @@ spring:
     default-property-inclusion: NON_NULL
     locale: pt-BR
     time-zone: America/Sao_Paulo
+  cache:
+    type: redis
+    redis:
+      host: localhost
+      port: 6379
+  mail:
+    host: sandbox.smtp.mailtrap.io
+    port: 2525
+    username: f8bab516ebb4e0
+    password: 3d8471bc4b2908
+    properties:
+      mail:
+        transport:
+          protocol: smtp
+        debug: true
+        smtp:
+          auth: true
+          starttls:
+            enable: true
 logging:
   level:
     org:

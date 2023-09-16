@@ -5,3 +5,4 @@ insert into usuario(id, nome, email) values (2, 'Maria Santos', 'maria.santos@em
 insert into usuario(id, nome, email) values (3, 'Pedro Almeida', 'pedro.almeida@email.com');
 insert into usuario(id, nome, email) values (4, 'Ana Oliveira', 'ana.oliveira@email.com');
 insert into usuario(id, nome, email) values (5, 'Carlos Pereira', 'carlos.pereira@email.com');
+insert into usuario(id, nome, email) values (6, 'Administrador', 'admin@email.com');
