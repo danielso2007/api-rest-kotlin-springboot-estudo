@@ -20,6 +20,7 @@
         <maven.compiler.target>17</maven.compiler.target>
         <kotlin.version>1.8.20</kotlin.version>
         <testcontainers.version>1.19.0</testcontainers.version>
+        <skip-tests>false</skip-tests>
     </properties>
 
     <dependencyManagement>
@@ -159,6 +160,32 @@
         <testSourceDirectory>${project.basedir}/src/test/kotlin</testSourceDirectory>
         <plugins>
             <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <release>${java.version}</release>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <configuration>
+                    <!-- Força a ordem alfabética para ter uma construção reproduzível -->
+                    <runOrder>alphabetical</runOrder>
+                    <skipTests>${skip-tests}</skipTests>
+                    <trimStackTrace>false</trimStackTrace>
+                    <forkCount>6</forkCount>
+                    <threadCount>6</threadCount>
+                    <reuseForks>false</reuseForks>
+                    <parallel>classes</parallel>
+                    <perCoreThreadCount>true</perCoreThreadCount>
+                    <useUnlimitedThreads>false</useUnlimitedThreads>
+                </configuration>
+            </plugin>
+            <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
@@ -238,6 +265,7 @@
             <id>dev</id>
             <properties>
                 <activatedProperties>dev</activatedProperties>
+                <skip-tests>true</skip-tests>
             </properties>
             <activation>
                 <activeByDefault>true</activeByDefault>

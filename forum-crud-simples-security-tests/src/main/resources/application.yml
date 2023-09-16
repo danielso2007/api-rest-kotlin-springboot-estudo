@@ -23,3 +23,17 @@ logging:
             StatementCreatorUtils: WARN
 jwt:
   secret: DF733656293A19C54F69093BA916F0A1A2A3C151FC95C13F3A794C2631EEB3A6
+springdoc:
+  version: '@project.version@'
+  swagger-ui:
+    path: /swagger-ui.html
+    operationsSorter: method
+    enabled: true
+    disable-swagger-default-url: true
+  api-docs:
+    path: /api-docs
+    enabled: true
+  packagesToScan:
+  packages-to-exclude:
+  show-atuator: true
+  auto-tag-classes: false

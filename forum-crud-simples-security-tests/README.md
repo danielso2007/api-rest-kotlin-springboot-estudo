@@ -46,3 +46,4 @@ Usando o postgresql. Dentro da pastas `postgresql`:
 - Usando https://mockk.io/
 - Usando https://joel-costigliola.github.io/assertj/
 
+https://github.com/alura-cursos/2373-kotlin-spring-testes-automatizados/tree/curso_4_aula_5
