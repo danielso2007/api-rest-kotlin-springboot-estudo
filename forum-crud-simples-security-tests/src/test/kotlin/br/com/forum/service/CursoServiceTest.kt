@@ -8,8 +8,8 @@ import io.mockk.every
 import io.mockk.mockk
 import io.mockk.slot
 import io.mockk.verify
-import org.assertj.core.api.Assertions
-import org.junit.Test
+import org.assertj.core.api.Assertions.assertThat
+import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 import org.springframework.data.domain.PageImpl
 import org.springframework.data.domain.Pageable
@@ -44,8 +44,8 @@ class CursoServiceTest {
         verify(exactly = 0) { repository.findAll(paginacao) }
 
         val curso = CursoTest.build()
-        Assertions.assertThat(slot.captured.nome).isEqualTo(curso.nome)
-        Assertions.assertThat(slot.captured.categoria).isEqualTo(curso.categoria)
+        assertThat(slot.captured.nome).isEqualTo(curso.nome)
+        assertThat(slot.captured.categoria).isEqualTo(curso.categoria)
     }
 
     @Test
@@ -67,7 +67,7 @@ class CursoServiceTest {
             cursoservice.buscarPorId(1)
         }
 
-        Assertions.assertThat(atual.message).isEqualTo("Curso não encontrado")
+        assertThat(atual.message).isEqualTo("Curso não encontrado")
     }
     
 }
