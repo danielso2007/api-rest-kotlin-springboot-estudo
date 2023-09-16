@@ -34,9 +34,9 @@ class RespostaRepositoryTest {
         @JvmStatic
         @DynamicPropertySource
         fun properties(registry: DynamicPropertyRegistry) {
-            registry.add("spring.datasource.url", pgsqlContainer::getJdbcUrl);
-            registry.add("spring.datasource.password", pgsqlContainer::getPassword);
-            registry.add("spring.datasource.username", pgsqlContainer::getUsername);
+            registry.add("spring.datasource.url", pgsqlContainer::getJdbcUrl)
+            registry.add("spring.datasource.password", pgsqlContainer::getPassword)
+            registry.add("spring.datasource.username", pgsqlContainer::getUsername)
         }
     }
 

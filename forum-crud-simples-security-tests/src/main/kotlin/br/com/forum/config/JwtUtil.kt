@@ -40,8 +40,7 @@ class JwtUtil(
 
     fun isValid(jwt: String?): Boolean {
         try {
-            Jwts.parserBuilder().requireAudience(jwtKey).build().parse(jwt)
-            //Jwts.parser().setSigningKey(getKey(jwtKey)).parseClaimsJws(jwt)
+            Jwts.parser().setSigningKey(getKey(jwtKey)).parseClaimsJws(jwt)
             return true
         } catch (e: SignatureException) {
             println("Invalid JWT signature: " + e.message)
@@ -58,8 +57,7 @@ class JwtUtil(
     }
 
     fun getAuthentication(jwt: String?): Authentication {
-        val username = Jwts.parserBuilder().requireAudience(jwtKey).build().parseClaimsJws(jwt).body.subject
-        //val username = Jwts.parser().setSigningKey(getKey(jwtKey)).parseClaimsJws(jwt).body.subject
+        val username = Jwts.parser().setSigningKey(getKey(jwtKey)).parseClaimsJws(jwt).body.subject
         val user = usuarioService.loadUserByUsername(username)
         return UsernamePasswordAuthenticationToken(username, null, user.authorities)
     }
